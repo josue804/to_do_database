@@ -1,6 +1,6 @@
 class Task
   @@Task = []
-  attr_reader(:description, :id)
+  attr_reader(:description, :list_id)
 
   define_method(:initialize) do |attributes|
     @description = attributes.fetch(:description)
@@ -23,6 +23,6 @@ class Task
 
   define_method(:==) do |other|
     same_description = self.description().eql?(other.description())
-    same_description 
+    same_description
   end
 end
