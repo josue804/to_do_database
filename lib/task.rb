@@ -7,15 +7,22 @@ class Task
     @id = attributes.fetch(:id)
   end
 
-  # define_method(:all) do
-  #   results = DB.exec("SELECT * FROM tasks;")
-  #   tasks = []
-  #   results.each() do |result|
-  #     description = result['description']
-  #     tasks << Task.new({})
-  # end
+  define_singleton_method(:all) do
+    results = DB.exec("SELECT * FROM tasks;")
+    tasks = []
+    results.each() do |result|
+      description = result.fetch("description")
+      tasks.push(Task.new({:description => description, :id => nil}))
+    end
+    tasks
+  end
 
   define_method(:save) do
-    @@Task.push(self)
+    result = DB.exec("INSERT INTO tasks (description) VALUES ('#{@description}') RETURNING id;")
+  end
+
+  define_method(:==) do |other|
+    same_description = self.description().eql?(other.description())
+    same_description 
   end
 end
