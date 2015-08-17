@@ -10,3 +10,9 @@ RSpec.configure do |config|
     DB.exec("DELETE FROM tasks * ;")
   end
 end
+
+RSpec.configure do |config|
+  config.after(:each) do
+    DB.exec("DELETE FROM list * ;")
+  end
+end
