@@ -14,13 +14,13 @@ class Task
     results.each() do |result|
       description = result.fetch("description")
       due_date = result.fetch("due_date")
-      tasks.push(Task.new({:description => description, :list_id => nil, :due_date => due_date}))
+      tasks.push(Task.new({:description => description, :due_date => due_date, :list_id => nil}))
     end
     tasks
   end
 
   define_method(:save) do
-    result = DB.exec("INSERT INTO tasks (description) VALUES ('#{@description}') RETURNING list_id;")
+    result = DB.exec("INSERT INTO tasks (description, due_date, list_id) VALUES ('#{@description}', '#{@due_date}', #{@list_id}) RETURNING id;")
   end
 
   define_method(:==) do |other|
