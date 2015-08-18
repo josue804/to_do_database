@@ -11,10 +11,6 @@ get('/') do
   erb(:index)
 end
 
-# get ('lists/new') do
-#   erb(:list_form)
-# end
-
 post('/') do
   name = params.fetch('list_name')
   list = List.new({:name => name, :id => nil})
@@ -34,9 +30,10 @@ post('/lists/:id') do
   description = params.fetch('task_description')
   due_date = params.fetch('due_date')
   @list_id = params.fetch('id').to_i()
+  @list = List.find()
   task = Task.new({:description => description, :due_date => due_date, :list_id => @list_id})
   task.save()
-  @tasks = Task.all()
+  @tasks = @list.tasks()
   erb(:list)
 end
 # get('tasks')

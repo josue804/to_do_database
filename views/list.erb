@@ -18,12 +18,10 @@
 <br>
 <div class="container">
 <% @tasks.each() do |task| %>
-  <% if !task.description().match(/\s/)%>
     <p>
       Task: <%= task.description() %><br>
       Due date: <%= task.due_date() %>
       <br>
       <br>
     </p>
-  <% end %>
 <% end %>
