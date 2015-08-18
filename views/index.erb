@@ -1,8 +1,18 @@
-<form action="/" method="post">
-  <div class="form-group">
-    <label for="list_name">ENTER A LIST MAGGOT</label>
-    <input type="text" name="list_name" placeholder="e.g. My favorite list">
-  </div>
 
-  <button class="btn btn-default btn-md">You Suck</button>
-</form>
+  <h2>You'll never complete these</h2>
+  <form action="/" method="post">
+    <div class="form-group">
+      <label for="list_name">ENTER A LIST, MAGGOT</label>
+      <input type="text" name="list_name" placeholder="e.g. My favorite list">
+    </div>
+
+    <button class="btn btn-default btn-md">You Suck</button>
+  </form>
+</div>
+<br>
+<br>
+
+<div class="container">
+<% @lists.each() do |list| %>
+<br><%= list.name() %>
+<% end %>
