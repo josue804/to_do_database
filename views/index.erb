@@ -14,5 +14,7 @@
 
 <div class="container">
 <% @lists.each() do |list| %>
-<br><%= list.name() %>
+  <% if !list.name().match(/\s/)%>
+    <br><a href="/lists/<%= list.id() %>"><%= list.name() %></a>
+  <% end %>
 <% end %>

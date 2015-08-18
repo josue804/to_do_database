@@ -1,0 +1,29 @@
+<div class="container">
+  <h2>So much to do, for a nobody!</h2>
+  <form action="/lists/<%= @list_id %>" method="post">
+    <div class="form-group">
+      <label for="task_description">Enter task</label>
+      <input type="text" name="task_description" placeholder="e.g. Clean the baby">
+    </div>
+
+    <div class="form-group">
+      <label for="due_date">Due date</label>
+      <input type="text" name="due_date" placeholder="e.g. Before the wife gets home">
+    </div>
+
+    <button class="btn btn-default btn-md">No one cares</button>
+  </form>
+</div>
+<br>
+<br>
+<div class="container">
+<% @tasks.each() do |task| %>
+  <% if !task.description().match(/\s/)%>
+    <p>
+      Task: <%= task.description() %><br>
+      Due date: <%= task.due_date() %>
+      <br>
+      <br>
+    </p>
+  <% end %>
+<% end %>
