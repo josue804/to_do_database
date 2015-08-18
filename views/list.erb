@@ -1,6 +1,6 @@
 <div class="container">
-  <h2>So much to do, for a nobody!</h2>
-  <form action="/lists/<%= @list_id %>" method="post">
+  <h2>So much to do, for a nobody <%= @list_id %> here</h2>
+  <form action="/lists/<%= params.fetch('id') %>" method="post">
     <div class="form-group">
       <label for="task_description">Enter task</label>
       <input type="text" name="task_description" placeholder="e.g. Clean the baby">

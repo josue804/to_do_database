@@ -25,6 +25,7 @@ end
 
 get('/lists/:id') do
   @list = List.all()
+  @tasks = Task.all()
   @id = params.fetch('id').to_i()
   erb(:list)
 end
